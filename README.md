@@ -27,3 +27,9 @@ You are always free to contribute and help improve the plugin yourself:\
 
 Download a pre-built jar directly from Modrinth:\
 <https://modrinth.com/plugin/bmc-mcmmo-notifier>
+
+## Interested in more?
+
+![Replace this with a description](https://cdn.modrinth.com/data/cached_images/420e53e103a2a6f0feeaad654cd17936138631ef.gif)\
+This plugin is part of, developed and used by BorderMC. Hop in and see which other cool plugins we have!\
+-> [play.bordermc.net](https://modrinth.com/server/bordermc)
