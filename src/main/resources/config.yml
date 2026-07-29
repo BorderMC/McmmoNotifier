@@ -1,0 +1,39 @@
+# If the plugin should be enabled.
+enabled: true
+
+# Version of notifier to run
+# false = Runs a console command to broadcast to the primary channel. Simple and fast approach.
+# true = Uses DiscordSRVs API to send a message. Useful if you want to use a custom channel.
+rich_notifier: true
+
+# Autodetect channel to broadcast in
+# Only works with rich_notifier set to 'true'
+auto_detect_channel: false
+
+# Chat to broadcast to if you want a customized channel
+# Only works with rich_notifier set to 'true'
+# Default is 'general', TownyChat uses 'global'
+# WARNING: If 'auto_detect_channel' is set to true, it will ignore this config.
+channel: general
+
+# Which frequency of levels should be notified. Default: 100
+# Examples:
+# 100 means every following levels: 100, 200, 300, 400, ...
+# 25 means every following levels: 25, 50, 75, 100, 125, ...
+frequency_levels: 100
+
+# Max levels to notify. Use -1 for no limit.
+# This is inclusive, so limit of 100 will still announce 100.
+limit_levels: -1
+
+# Message to send, Discord markdown is supported
+# More info: https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline
+# PAPI placeholder is NOT supported, the following are only processed.
+# Following custom placeholders are supported:
+#  %player% = Raw player name (Not using nickname)
+#  %nickname% = Nickname of the player (Aka display name = Essentials '/nick' command)
+#  %old_level% = Old level the player came from. Useful for when player gets multiple levels at once.
+#  %levels_gained% = Difference between new level & old level.
+#  %new_level% = New level reached
+#  %skill% = Skill the player levelled
+message: "**%player%** reached **level %new_level%** in **%skill%**!"

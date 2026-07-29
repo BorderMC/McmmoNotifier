@@ -1,0 +1,26 @@
+name: McmmoNotifier
+version: '1.0.0'
+main: net.bordermc.mcmmoNotifier.McmmoNotifier
+author: BorderMC
+api-version: '1.21'
+
+website: https://bordermc.net
+load: POSTWORLD
+
+depend:
+  - McMMO
+  - DiscordSRV
+
+permissions:
+  mcmmonotifier.do_not_notify:
+    description: Doesn't show the notification if the user has this permission.
+    default: false
+  mcmmonotifier.reload:
+    description: Allows to reload the configuration file.
+    default: op
+
+commands:
+  mcmmonotifier:
+    description: Commands related to mcmmo notifier.
+    permission: mcmmonotifier.reload
+    permission-message: You don't have the permission to use this command.
