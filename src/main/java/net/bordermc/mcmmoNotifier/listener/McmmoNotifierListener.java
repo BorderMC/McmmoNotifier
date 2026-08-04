@@ -24,8 +24,8 @@ public class McmmoNotifierListener implements Listener {
     @EventHandler(ignoreCancelled = true)
     public void onLevelUp(@NotNull McMMOPlayerLevelUpEvent event) {
         if (!config.enabled()) return;
-        int newLevel = event.getSkillLevel() - event.getLevelsGained();
-        if (newLevel > config.limitLevels()) return;
+        int newLevel = event.getSkillLevel();
+        if (config.limitLevels() != -1 && newLevel > config.limitLevels()) return;
         if (newLevel % config.frequencyLevels() != 0) return;
 
         Player player = event.getPlayer();
@@ -45,29 +45,20 @@ public class McmmoNotifierListener implements Listener {
                 .replace("%skill%", formatSkill(skill));
 
         // Broadcasts the message
-        if (config.richNotifier()) {
-            // Use DiscordSRV API to send a message
-            TextChannel channel;
-            if (config.autoDetectChannel()) {
-                // Autodetect channel, usually general or global
-                channel = DiscordSRV.getPlugin().getMainTextChannel();
-            } else {
-                channel = DiscordSRV.getPlugin().getDestinationTextChannelForGameChannelName(config.channel());
-            }
-            // Warning for an invalid/wrong DiscordSRV configuration
-            // Not automatically falling back to autodetect to make sure the owner/developer sees that it's not working
-            if (channel == null) {
-                Bukkit.getLogger().severe("[McmmoNotifier] Channel configured or detected is wrong! Please set a valid channel in our config file or setup DiscordSRV correctly.");
-                return;
-            }
-            channel.sendMessage(message).queue();
+        TextChannel channel;
+        if (config.autoDetectChannel()) {
+            // Autodetect channel, usually general or global
+            channel = DiscordSRV.getPlugin().getMainTextChannel();
         } else {
-            // This will just broadcast to the primary channel
-            Bukkit.dispatchCommand(
-                    Bukkit.getConsoleSender(),
-                    "discord broadcast " + message
-            );
+            channel = DiscordSRV.getPlugin().getDestinationTextChannelForGameChannelName(config.channel());
         }
+        // Warning for an invalid/wrong DiscordSRV configuration
+        // Not automatically falling back to autodetect to make sure the owner/developer sees that it's not working
+        if (channel == null) {
+            Bukkit.getLogger().severe("[McmmoNotifier] Channel configured or detected is wrong! Please set a valid channel in our config file or setup DiscordSRV correctly.");
+            return;
+        }
+        channel.sendMessage(message).queue();
     }
 
     private @NotNull String formatSkill(@NotNull PrimarySkillType skill) {

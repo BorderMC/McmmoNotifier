@@ -17,6 +17,9 @@ public final class McmmoNotifier extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
+        config.reload();
+
         if (Bukkit.getPluginManager().getPlugin("mcMMO") == null || !Bukkit.getPluginManager().isPluginEnabled("mcMMO")) {
             getLogger().info("[McmmoNotifier] McMMO plugin not found; Plugin will stay idle.");
             return;

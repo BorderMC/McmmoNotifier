@@ -1,4 +1,4 @@
-name: McmmoNotifier
+name: BmcMcmmoNotifier
 version: '1.0.0'
 main: net.bordermc.mcmmoNotifier.McmmoNotifier
 author: BorderMC
@@ -8,7 +8,7 @@ website: https://bordermc.net
 load: POSTWORLD
 
 depend:
-  - McMMO
+  - mcMMO
   - DiscordSRV
 
 permissions:

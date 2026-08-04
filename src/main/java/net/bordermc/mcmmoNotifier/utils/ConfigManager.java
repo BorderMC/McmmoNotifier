@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 public class ConfigManager {
     private final McmmoNotifier plugin;
 
-    private boolean enabled, richNotifier, autoDetectChannel;
+    private boolean enabled, autoDetectChannel;
     private String channel, message;
     private int frequencyLevels, limitLevels;
 
@@ -21,7 +21,6 @@ public class ConfigManager {
         FileConfiguration config = plugin.getConfig();
 
         enabled = config.getBoolean("enabled", true);
-        richNotifier = config.getBoolean("richNotifier", true);
         autoDetectChannel = config.getBoolean("auto_detect_channel", false);
         channel = config.getString("channel", "general");
         frequencyLevels = config.getInt("frequency_levels", 100);
@@ -31,10 +30,6 @@ public class ConfigManager {
 
     public boolean enabled() {
         return enabled;
-    }
-
-    public boolean richNotifier() {
-        return richNotifier;
     }
 
     public boolean autoDetectChannel() {

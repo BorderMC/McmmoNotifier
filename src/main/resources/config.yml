@@ -1,20 +1,15 @@
 # If the plugin should be enabled.
 enabled: true
 
-# Version of notifier to run
-# false = Runs a console command to broadcast to the primary channel. Simple and fast approach.
-# true = Uses DiscordSRVs API to send a message. Useful if you want to use a custom channel.
-rich_notifier: true
-
 # Autodetect channel to broadcast in
 # Only works with rich_notifier set to 'true'
 auto_detect_channel: false
 
 # Chat to broadcast to if you want a customized channel
 # Only works with rich_notifier set to 'true'
-# Default is 'general', TownyChat uses 'global'
+# Default is 'global', TownyChat uses 'general'
 # WARNING: If 'auto_detect_channel' is set to true, it will ignore this config.
-channel: general
+channel: global
 
 # Which frequency of levels should be notified. Default: 100
 # Examples:
